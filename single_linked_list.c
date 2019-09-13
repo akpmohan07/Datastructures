@@ -71,7 +71,7 @@ void show()
 
 //Function to insert in the created node
 //insert(int_data to be inserted , int_Position , int_total node count)
-void insert(int data,int pos,int node_count)
+int insert(int data,int pos,int node_count)
 {
     
     int i=1;
@@ -89,6 +89,7 @@ void insert(int data,int pos,int node_count)
 
          nn->next=head;
          head=nn;
+         return ++node_count;
     }
     else if(pos==node_count+1)//Insert in bend
     {
@@ -98,7 +99,7 @@ void insert(int data,int pos,int node_count)
          tail->next=nn;
          tail=nn;
          tail->next=NULL;
-
+         return ++node_count;
     }
     else//Insert in middle
     {
@@ -114,6 +115,7 @@ void insert(int data,int pos,int node_count)
 
          nn->next=temp->next;
          temp->next=nn;
+         return ++node_count;
     }
     
     
@@ -123,7 +125,7 @@ void insert(int data,int pos,int node_count)
 //update(int_data to e updated,int_postion)
 void update(int data,int pos)
 {
-    int i;
+    int i=1;
     temp=head;
 
     while(i<pos)
@@ -136,7 +138,7 @@ void update(int data,int pos)
 
 //Function to delete the node(Delete by position)
 //delete(int_position , int_total node count)
-void delete(int pos,int node_count)
+int delete(int pos,int node_count)
 {
 
     int i=1;
@@ -152,6 +154,7 @@ void delete(int pos,int node_count)
         temp=head;
 
         free(temp);
+        return --node_count;
     }
     else if(pos==node_count)//Delete in end
     {
@@ -164,6 +167,8 @@ void delete(int pos,int node_count)
          free(tail);
 
          tail=temp;
+         tail->next=NULL;
+        return --node_count;
 
     }
     else//Delete in middle
@@ -177,6 +182,7 @@ void delete(int pos,int node_count)
 
          nn->next=temp->next;
          temp->next=nn;
+         return --node_count;
     }
 }
 
@@ -186,7 +192,7 @@ void main()
 
     do
     { 
-        printf("Select Your choice:\n1.Create\n2.Insert\n3.Update\n4.Delete");
+        printf("Select Your choice:\n1.Create\n2.Insert\n3.Update\n4.Delete\n");
         scanf("%d",&choice);
     
         switch (choice)
@@ -204,7 +210,7 @@ void main()
                 scanf("%d",&data);
                 printf("Enter the Position to insert:");
                 scanf("%d",&pos);
-                insert(data,pos,node_count);
+                node_count = insert(data,pos,node_count);
                 
                 break;
             }
@@ -221,7 +227,7 @@ void main()
             {
                 printf("Enter the postion to be deleted:");
                 scanf("%d",&pos);
-                delete(pos,node_count);
+                node_count = delete(pos,node_count);
                 break;
             }
             default:
@@ -229,7 +235,7 @@ void main()
         }
         show();
         printf("Do you wanna continue(1/0):");
-        scanf("&d",&choice);
+        scanf("&d",&choice);getchar();
     }while(choice!=0);
 
 }
