@@ -61,6 +61,7 @@ class list
     }
     cn.next = temp.next;
     }
+    sc.close();
 
   }
   void find()
@@ -69,6 +70,7 @@ class list
     System.out.print("Enter the element to find:");
     Scanner sc = new Scanner(System.in);
     ele = sc.nextInt();
+    sc.close();
     list.Node temp = this.root;
     while(temp!=null)
     {
@@ -82,6 +84,7 @@ class list
     if(temp==null)
     System.out.print("Element not found!\n");
   }
+
 }
 class main
 {
