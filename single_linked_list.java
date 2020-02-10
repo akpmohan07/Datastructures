@@ -21,7 +21,7 @@ class list
     
   void insert(int data)
   {
-    list.Node nn = new Node(data);
+    Node nn = new Node(data);
     
     if(this.root==null)
       this.root = nn;
@@ -70,7 +70,6 @@ class list
     System.out.print("Enter the element to find:");
     Scanner sc = new Scanner(System.in);
     ele = sc.nextInt();
-    sc.close();
     list.Node temp = this.root;
     while(temp!=null)
     {
@@ -83,6 +82,7 @@ class list
     }
     if(temp==null)
     System.out.print("Element not found!\n");
+
   }
 
 }
