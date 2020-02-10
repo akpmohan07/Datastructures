@@ -1,5 +1,5 @@
 import java.util.*;
-
+//Java program to simulate the Sinly Linked List.
 class list
 {
  static class Node
