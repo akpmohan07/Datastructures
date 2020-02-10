@@ -50,3 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+list.class
+list$Node.class
+main.class
+.class
+.gitignore
